@@ -6,9 +6,8 @@ import Cart from "@/pages/cart";
 import Shop from "@/pages/Category";
 import CheckoutPage from "@/pages/checkout/Checkout";
 import Collection from "@/pages/collection";
-import Dashboard from "@/pages/Dashboard";
+import Dashboard from "@/components/ui/Dashboard"; // Updated Dashboard import
 import ForgotPassword from "@/pages/Forgot-password";
-
 import HomePage from "@/pages/homepage";
 import Login from "@/pages/Login/Login";
 import Order from "@/pages/orders/Orders";
@@ -32,23 +31,9 @@ const AppRoutes = () => {
         </Suspense>
       ),
       children: [
-        {
-          index: true,
-          element: (
-         
-              <HomePage />
-    
-          ),
-        },
+        { index: true, element: <HomePage /> },
         { path: "about", element: <>About</> },
-        {
-          path: "collection",
-          element: (
- 
-              <Collection />
-  
-          ),
-        },
+        { path: "collection", element: <Collection /> },
         {
           path: "auth",
           element: (
@@ -57,34 +42,10 @@ const AppRoutes = () => {
             </Suspense>
           ),
           children: [
-            {
-              index: true,
-              element: <>Auth</>,
-            },
-            {
-              path: "forgot-password",
-              element: (
-               
-                  <ForgotPassword />
-             
-              ),
-            },
-            {
-              path: "ProductDetailPage",
-              element: (
-        
-                  <ProductDetailPage />
-       
-              ),
-            },
-            {
-              path: "checkout",
-              element: (
-          
-                  <CheckoutPage />
-          
-              ),
-            },
+            { index: true, element: <>Auth</> },
+            { path: "forgot-password", element: <ForgotPassword /> },
+            { path: "ProductDetailPage", element: <ProductDetailPage /> },
+            { path: "checkout", element: <CheckoutPage /> },
             {
               path: "dashboard",
               element: (
@@ -94,80 +55,17 @@ const AppRoutes = () => {
                   </DashboardLayout>
                 </Suspense>
               ),
-
               children: [
-                {
-                  index: true,
-                  element: (
-                  
-                      <Dashboard />
-              
-                  ),
-                },
-                { path: "profile", element: <><ProfilePage/></> },
-
-                {
-                  path: "wishlist",
-                  element: (
-             
-                      <Wishlist />
-               
-                  ),
-                },
-
-                {
-                  path: "orders",
-                  element: (
-              
-                      <Order />
-               
-                  ),
-                },
-
-                {
-                  path: "shipping",
-                  element: (
-              
-                      <ShippingAddressPage />
-             
-                  ),
-                },
+                { index: true, element: <Dashboard /> },
+                { path: "profile", element: <ProfilePage /> },
+                { path: "wishlist", element: <Wishlist /> },
+                { path: "orders", element: <Order /> },
+                { path: "shipping", element: <ShippingAddressPage /> },
               ],
             },
-            {
-              path: "category",
-              element: (
-          
-                  <Shop />
-              
-              ),
-            },
+            { path: "category", element: <Shop /> },
           ],
         },
-
-        // Protected routes (only for authenticated users)
-        // {
-        //   element: <AuthGuard />, // This will protect all child routes
-        //   children: [
-        //     {
-        //       path: "cart",
-        //       element: (
-        //         <Suspense fallback={<h1>Loading...</h1>}>
-        //           <Cart />
-        //         </Suspense>
-        //       ),
-        //     },
-        //     {
-        //       path: "wishlist",
-        //       element: (
-        //         <Suspense fallback={<h1>Loading...</h1>}>
-        //           <Wishlist />
-        //         </Suspense>
-        //       ),
-        //     },
-        //   ],
-        // },
-
         {
           path: "cart",
           element: (
@@ -178,7 +76,6 @@ const AppRoutes = () => {
             </Suspense>
           ),
         },
-
         {
           path: "wishlist",
           element: (
@@ -195,7 +92,6 @@ const AppRoutes = () => {
             </Suspense>
           ),
         },
-
         {
           path: "register",
           element: (
@@ -204,7 +100,6 @@ const AppRoutes = () => {
             </Suspense>
           ),
         },
-
         { path: "*", element: <>Not Found</> },
       ],
     },
