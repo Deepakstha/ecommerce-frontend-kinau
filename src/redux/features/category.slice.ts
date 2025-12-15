@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getAllCategory } from "../thunk/category.thunk";
+import { deleteCategory, getAllCategory } from "../thunk/category.thunk";
 import type { CategoryI } from "@/interfaces/category.interface";
+import { ActivityIcon } from "lucide-react";
 
 interface initialStateI {
   isLoading: boolean;
@@ -40,7 +41,11 @@ const categorySlice = createSlice({
       .addCase(getAllCategory.rejected, (state, action) => {
         state.isLoading = false;
         state.error = (action.payload as string) || "Failed to load products";
-      });
+      })
+      .addCase(deleteCategory.fulfilled, (state,action)=>{
+        state.isLoading = false;
+        state.categories = state.categories.filter(cat=>cat.id !== action.payload)
+      })
   },
 })
 

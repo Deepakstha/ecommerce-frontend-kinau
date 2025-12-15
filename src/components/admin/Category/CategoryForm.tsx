@@ -5,7 +5,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 
 interface CategoryFormProps {
-  initialData?: { name: string };
+  initialData?: { id: string; name: string } | null;
 }
 interface CategoryData{
   name:string;

@@ -1,18 +1,22 @@
 // components/admin/Category/CategoryList.tsx
 import type { RootState } from "@/redux/root-reducer";
 import type { AppDispatch } from "@/redux/store";
-import { getAllCategory } from "@/redux/thunk/category.thunk";
+import { deleteCategory, getAllCategory } from "@/redux/thunk/category.thunk";
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-export default function CategoryList() {
-    const dispatch = useDispatch<AppDispatch>();
-     const { categories, isLoading, error } = useSelector(
-    (state: RootState) => state.categories
-    );
-    useEffect(()=>{
-      dispatch(getAllCategory())
-    },[dispatch])
+export default function CategoryList({handleEditCategory}: any) {
+  const dispatch = useDispatch<AppDispatch>();
+    const { categories, isLoading, error } = useSelector(
+  (state: RootState) => state.categories
+  );
+  useEffect(()=>{
+    dispatch(getAllCategory())
+  },[dispatch])
+
+  const handleDeleteCategory = (id: string)=>{
+    dispatch(deleteCategory(id))
+  }
 
  if (isLoading) {
     return <p>Loading categories...</p>;
@@ -44,10 +48,10 @@ export default function CategoryList() {
             <tr key={c.id} className="hover:bg-gray-50">
               <td className="p-2 border">{c.name}</td>
               <td className="p-2 border space-x-2">
-                <button className="bg-blue-500 text-white px-3 py-1 rounded">
+                <button onClick={()=>handleEditCategory(c)} className="bg-blue-500 text-white px-3 py-1 rounded">
                   Edit
                 </button>
-                <button className="bg-red-500 text-white px-3 py-1 rounded">
+                <button onClick={()=>handleDeleteCategory(c.id)} className="bg-red-500 text-white px-3 py-1 rounded">
                   Delete
                 </button>
               </td>
