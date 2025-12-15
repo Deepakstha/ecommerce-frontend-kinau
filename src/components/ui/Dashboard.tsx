@@ -83,7 +83,7 @@ export default function AdminDashboard() {
           >
             {showCategoryForm ? "Close Category Form" : "Add Category"}
           </button>
-          {showCategoryForm && <CategoryForm onSubmit={(data) => console.log(data)} />}
+          {showCategoryForm && <CategoryForm />}
           <CategoryList />
         </div>
 
