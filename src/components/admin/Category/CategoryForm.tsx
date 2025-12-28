@@ -34,7 +34,7 @@ export default function CategoryForm({ initialData }: CategoryFormProps) {
 
   return (
     <form onSubmit={handleSubmit} className="bg-white p-4 rounded-2xl shadow mb-6 space-y-4">
-      <h2 className="text-xl font-semibold">Add / Edit Category</h2>
+      <h2 className="text-xl font-semibold">ADD and Edit Category</h2>
 
       <div>
         <label className="block text-sm font-medium mb-1">Name</label>
