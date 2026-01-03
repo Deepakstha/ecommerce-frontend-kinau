@@ -9,19 +9,24 @@ import { getAllProducts } from "@/redux/thunk/product.thunk";
 import { Card, CardContent } from "@/components/ui/Card";
 import { getAllCategory } from "@/redux/thunk/category.thunk";
 import ProductCard from "@/components/ui/card/product-card";
+import { useSearchParams } from "react-router-dom";
 
 export default function ProductPage() {
   const dispatch = useDispatch<AppDispatch>();
   const { products, isLoading } = useSelector((state: RootState) => state.product);
     const{isLoading: categoryLoading, categories} = useSelector((state:RootState)=>state.categories);
   // Filters mapped directly to backend query params
+  const [searchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search");
   const [page, setPage] = useState(1);
   const [limit] = useState(12);
-  const [search, setSearch] = useState("");
+  // const [search, setSearch] = useState("");
   const [category, setCategory] = useState<string | undefined>(undefined);
   const [sort, setSort] = useState("newest");
   const [minPrice, setMinPrice] = useState<number | undefined>(undefined);
   const [maxPrice, setMaxPrice] = useState<number | undefined>(undefined);
+
+  
 
   // Fetch from backend whenever filters change
   useEffect(() => {
@@ -29,14 +34,14 @@ export default function ProductPage() {
       getAllProducts({
         page,
         limit,
-        search: search || undefined,
+        search: searchQuery || undefined,
         category,
         minPrice,
         maxPrice,
         sort,
       })
     );
-  }, [dispatch, page, limit, search, category, minPrice, maxPrice, sort]);
+  }, [dispatch, page, limit, category, minPrice, maxPrice, sort, searchQuery]);
   useEffect(() => {
   dispatch(getAllCategory());
 }, [dispatch]);
@@ -45,16 +50,8 @@ export default function ProductPage() {
     const isOutOfStock = (product: any) => product.totalStock <= 0;
 
   return (
-    <div className="p-6 space-y-6">
-      {/* Search Bar */}
-      <Input
-        placeholder="Search products..."
-        value={search}
-        onChange={(e) => {
-          setPage(1);
-          setSearch(e.target.value);
-        }}
-      />
+    <div className="p-10 space-y-10">
+
 
       {/* Filters */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">

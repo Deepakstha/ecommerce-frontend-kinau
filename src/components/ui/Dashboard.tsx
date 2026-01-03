@@ -132,31 +132,7 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
   }
   return (
     <div className="flex h-screen bg-gray-100">
-      {/* Sidebar */}
-      <aside
-        className={`bg-gray-900 text-white transition-all duration-300 ${
-          collapsed ? "w-16" : "w-64"
-        }`}
-      >
-        <div className="flex items-center justify-between p-4 border-b border-gray-700">
-          {!collapsed && <h1 className="text-lg font-bold">E‑Commerce Admin</h1>}
-          <button
-            onClick={() => setCollapsed(!collapsed)}
-            className="text-gray-300 hover:text-white"
-          >
-            ☰
-          </button>
-        </div>
-
-        <nav className="p-4 space-y-2">
-          <SidebarItem label="Dashboard" collapsed={collapsed} />
-          <SidebarItem label="Orders" collapsed={collapsed} />
-          <SidebarItem label="Products" collapsed={collapsed} />
-          <SidebarItem label="Customers" collapsed={collapsed} />
-          <SidebarItem label="Payments" collapsed={collapsed} />
-          <SidebarItem label="Settings" collapsed={collapsed} />
-        </nav>
-      </aside>
+      
 
       {/* Main Content */}
       <main className="flex-1 p-6 overflow-y-auto space-y-6">

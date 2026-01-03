@@ -10,14 +10,17 @@ const ProductCard = ({ product }: any) => {
   const dispatch = useDispatch<AppDispatch>();
 
   const handleAddToCart = () => {
+    if(product?.variants.length == 0){
+      return toast.error("This product doesnot have variants.")
+    }
     dispatch(
       addToCart({
-        productId: product.id,
+        product: product._id,
         name: product.name,
         price: product.priceRange?.min ?? product.basePrice,
         image: product.mainImages?.[0],
         quantity: 1,
-        variantId: 1,
+        variant: product.variants[0],
       })
     );
     toast.success(`${product.name} added to cart!`);

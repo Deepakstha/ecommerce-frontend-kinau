@@ -36,6 +36,14 @@ const Navbar = () => {
     });
   };
 
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+
+    if (!search.trim()) return;
+
+    navigate(`/products?search=${encodeURIComponent(search)}`);
+  };
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Announcement Bar */}
@@ -61,17 +69,22 @@ const Navbar = () => {
           
 
             {/* Search */}
-            <div className="relative hidden lg:block w-[320px]">
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={search}
-                onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-sm
-                           focus:outline-none focus:ring-2 focus:ring-black/80 transition"
-              />
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500" />
-            </div>
+             <form
+      onSubmit={handleSubmit}
+      className="relative hidden lg:block w-[320px]"
+    >
+      <input
+        type="text"
+        placeholder="Search products..."
+        value={search}
+        onChange={(e) => setSearch(e.target.value)}
+        className="w-full rounded-full border border-gray-300 bg-white px-4 py-2 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-black/80 transition"
+      />
+
+      <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
+    </form>
+            <Link to="/products">Products</Link>
 
             {/* Icons */}
             <div className="flex items-center gap-6 text-gray-700">
