@@ -35,9 +35,11 @@ const Cart = () => {
     (sum: number, item: any) => sum + item.price * item.quantity,
     0
   );
-
   const handelPlaceOrder = async()=>{
    try {
+    if(!shippingAddress){
+      return toast.error("Shipping address required.")
+    }
      const orderItems = carts.map((item) => ({
       product: item.product,  
       quantity: item.quantity,
@@ -52,6 +54,7 @@ const Cart = () => {
       navigate(-1)
     }
    } catch (error) {
+    console.log(error)
     toast.error("Failed to placed order.")
    }
   }
