@@ -22,13 +22,16 @@ const Navbar = () => {
   const isLoggedIn = useHasToken();
 
   useEffect(() => {
+    if (!isLoggedIn) return;
+
     (async () => {
       const result = await dispatch(getWishlistCount());
       if (getWishlistCount.fulfilled.match(result)) {
         dispatch(changeWishlistCount(result.payload.count));
       }
     })();
-  }, []);
+  }, [isLoggedIn, dispatch]);
+
 
   const logOut = () => {
     dispatch(logoutUser()).then(() => {
