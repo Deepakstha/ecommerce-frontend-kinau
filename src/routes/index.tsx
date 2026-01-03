@@ -88,6 +88,7 @@ const AppRoutes = () => {
             </Suspense>
           ),
         },
+        { path: "profile", element: <ProfilePage /> },
         {
           path: "login",
           element: (

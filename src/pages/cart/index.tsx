@@ -8,9 +8,11 @@ import { createShippingAddress, getDefaultShippingAddress } from "@/redux/thunk/
 import { createOrder } from "@/redux/thunk/oreder.thunk";
 import { clearCart, removeFromCart } from "@/redux/features/cart.slice";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const dispatch = useDispatch<AppDispatch>()
+  const navigate = useNavigate()
   const [showAddress, setShowAddress] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [shippingAddress, setShippingAddress] = useState<any>(null)
@@ -33,9 +35,12 @@ const Cart = () => {
     (sum: number, item: any) => sum + item.price * item.quantity,
     0
   );
-
   const handelPlaceOrder = async()=>{
-    const orderItems = carts.map((item) => ({
+   try {
+    if(!shippingAddress){
+      return toast.error("Shipping address required.")
+    }
+     const orderItems = carts.map((item) => ({
       product: item.product,  
       quantity: item.quantity,
       price: item.price,
@@ -45,7 +50,13 @@ const Cart = () => {
     if(addToCartThunk.fulfilled.match(result)){
       await dispatch(createOrder({shippingAddressId: shippingAddress._id, paymentMethod}))
       await dispatch(clearCart())
+      toast.success("Order Placed")
+      navigate(-1)
     }
+   } catch (error) {
+    console.log(error)
+    toast.error("Failed to placed order.")
+   }
   }
 
   const handleAddAddress = async(data: any) => {
@@ -56,6 +67,11 @@ const Cart = () => {
     }
     setShowModal(false);
   };
+
+  const handleRemoveFromCart = async(productId: string)=>{
+    await dispatch(removeFromCart(productId))
+    toast.success("Product removed form cart.")
+  }
 
   return (
     <div className="flex flex-col md:flex-row py-16 max-w-6xl w-full px-6 mx-auto">
@@ -118,7 +134,7 @@ const Cart = () => {
               ${product.price * product.quantity}
             </p>
 
-            <button className="cursor-pointer mx-auto">
+            <button onClick={()=>handleRemoveFromCart(product.productId)} className="cursor-pointer mx-auto">
               <svg
                 width="20"
                 height="20"
