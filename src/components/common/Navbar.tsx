@@ -87,7 +87,10 @@ const Navbar = () => {
 
       <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-500 pointer-events-none" />
     </form>
-            <Link to="/products">Products</Link>
+            <Link to="/products" className="relative text-lg font-medium text-gray-700 hover:text-gray-900
+             after:absolute after:left-0 after:-bottom-1 after:h-[2px] after:w-0
+             after:bg-gray-900 after:transition-all after:duration-300
+             hover:after:w-full">Products</Link>
 
             {/* Icons */}
             <div className="flex items-center gap-6 text-gray-700">
