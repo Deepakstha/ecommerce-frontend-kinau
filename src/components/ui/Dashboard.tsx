@@ -144,8 +144,14 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
         <div>
           <button
             onClick={handleAddProduct}
-            className="mb-2 bg-blue-500 text-white px-4 py-2 rounded"
+            className="group flex items-center justify-center gap-2 
+                   bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold 
+                   px-6 py-1 mb-2 rounded-full shadow-md
+                   hover:from-green-600 hover:to-green-700
+                   transition-all duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
           >
+              <span className="text-lg font-bold transition-transform duration-200 group-hover:translate-x-1">+</span>
             {showProductForm ? "Close Product Form" : "Add Product"}
           </button>
           {showProductForm && <ProductForm initialData={editingProduct} />}
@@ -156,8 +162,13 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
         <div>
           <button
             onClick={handleAddCategory}
-            className="mb-2 bg-blue-500 text-white px-4 py-2 rounded"
-          >
+            className="group flex items-center justify-center gap-2 
+                   bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold 
+                   px-6 py-1 mb-2 rounded-full shadow-md
+                   hover:from-green-600 hover:to-green-700
+                   transition-all duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+          ><span className="text-lg font-bold transition-transform duration-200 group-hover:translate-x-1">+</span>
             {showCategoryForm ? "Close Category Form" : "Add Category"}
           </button>
           {showCategoryForm && <CategoryForm initialData={editingCategory} />}
@@ -168,8 +179,13 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
         <div>
           <button
             onClick={() => setShowVariantForm(!showVariantForm)}
-            className="mb-2 bg-blue-500 text-white px-4 py-2 rounded"
-          >
+            className="group flex items-center justify-center gap-2 
+                   bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold 
+                   px-6 py-1 mb-2 rounded-full shadow-md
+                   hover:from-green-600 hover:to-green-700
+                   transition-all duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+          ><span className="text-lg font-bold transition-transform duration-200 group-hover:translate-x-1">+</span>
             {showVariantForm ? "Close Variant Form" : "Add Variant"}
           </button>
           {showVariantForm && <VariantForm initialData= {editingVariant} />}
@@ -180,8 +196,13 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
         <div>
           <button
             onClick={handleAddSize}
-            className="mb-2 bg-blue-500 text-white px-4 py-2 rounded"
-          >
+            className="group flex items-center justify-center gap-2 
+                   bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold 
+                   px-6 py-1 mb-2 rounded-full shadow-md
+                   hover:from-green-600 hover:to-green-700
+                   transition-all duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+          ><span className="text-lg font-bold transition-transform duration-200 group-hover:translate-x-1">+</span>
             {showSizeForm ? "Close Size Form" : "Add Size"}
           </button>
           {showSizeForm && <SizeForm initialData={editingSize} />}
@@ -192,8 +213,13 @@ const [editingColor, setEditingColor] = useState<EditingColor | null>(null);
         <div>
           <button
             onClick={handleAddColor}
-            className="mb-2 bg-blue-500 text-white px-4 py-2 rounded"
-          >
+            className="group flex items-center justify-center gap-2 
+                   bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold 
+                   px-6 py-1 mb-2 rounded-full shadow-md
+                   hover:from-green-600 hover:to-green-700
+                   transition-all duration-200
+                   focus:outline-none focus:ring-2 focus:ring-green-400 focus:ring-offset-1"
+          ><span className="text-lg font-bold transition-transform duration-200 group-hover:translate-x-1">+</span>
             {showColorForm ? "Close Color Form" : "Add Color"}
           </button>
           {showColorForm && <ColorForm initialData={editingColor} />}
