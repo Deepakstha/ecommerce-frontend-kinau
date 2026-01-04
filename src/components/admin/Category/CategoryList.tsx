@@ -48,10 +48,7 @@ export default function CategoryList({ handleEditCategory }: any) {
             onChange={(e) => setSearch(e.target.value)}
             className="w-full md:w-64 px-4 py-2 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-400"
           />
-          <button className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-5 py-2 rounded-xl shadow-lg font-medium transition-all">
-            <FiPlus size={18} />
-            Add Category
-          </button>
+        
         </div>
       </div>
 

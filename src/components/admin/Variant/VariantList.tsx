@@ -41,9 +41,7 @@ useEffect(()=>{
     <div className="bg-white p-4 rounded-2xl shadow">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-xl font-semibold">Variants</h2>
-        <button className="bg-green-500 text-white px-4 py-2 rounded">
-          Add Variant
-        </button>
+        
       </div>
 
       <select

@@ -31,10 +31,7 @@ export default function SizeList({ handleEditSize }: any) {
       {/* Header */}
       <div className="flex justify-between items-center mb-8">
         <h2 className="text-3xl font-bold text-gray-800">Sizes</h2>
-        <button className="flex items-center gap-2 bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-5 py-2 rounded-xl shadow-lg font-medium transition-all">
-          <FiPlus size={18} />
-          Add Size
-        </button>
+       
       </div>
 
       {/* Table */}
