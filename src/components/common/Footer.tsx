@@ -72,7 +72,7 @@ const Footer = () => {
               <h3 className="mb-5 text-xs font-semibold tracking-[0.25em] text-white">
                 CONNECT
               </h3>
-              <div className="flex gap-6 text-lg">
+              <div className="flex gap-6 text-white text-lg">
                 {[FaFacebook, FaInstagram, FaLinkedin].map((Icon, i) => (
                   <Icon
                     key={i}
