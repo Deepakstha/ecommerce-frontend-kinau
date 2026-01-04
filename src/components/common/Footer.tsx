@@ -17,14 +17,12 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-6">
             <img
-              src="/assets/kinaulogo.png"
+              src="/assets/logo-white.png"
               alt="Kinau"
               className="h-16 w-16 object-contain drop-shadow-xl"
             />
-            <p className="max-w-sm text-sm leading-relaxed text-gray-300">
-              Kinau is a premium shopping destination for performance wear,
-              footwear, and accessories — crafted for everyday athletes and
-              modern lifestyles.
+            <p className="max-w-sm text-sm leading-relaxed text-white">
+              Kinau is a premium shopping destination for every type of Gadgets you can possibly imagine. Crafted with generous Discounts. Happy Shopping!!!
             </p>
           </div>
 
@@ -89,7 +87,7 @@ const Footer = () => {
       </div>
 
       {/* Bottom Bar */}
-      <div className="relative z-10 border-t border-white/10 bg-black/40 backdrop-blur-sm py-6 text-center text-xs tracking-wider text-gray-500">
+      <div className="relative z-10 border-t border-white/10 bg-black/40 backdrop-blur-sm py-6 text-center text-xs tracking-wider text-white">
         © 2025 Kinau. Crafted with precision. All rights reserved.
       </div>
     </footer>
