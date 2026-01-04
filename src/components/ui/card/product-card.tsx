@@ -74,21 +74,23 @@ const ProductCard = ({ product }: any) => {
       </div>
 
       {/* Actions Strip */}
-      <div className="flex items-center justify-between bg-gray-50 px-5 py-3 border-t border-gray-200 transition-transform group-hover:translate-y-0 translate-y-2">
-        <button
-          onClick={handleAddToCart}
-          className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-700 transition-all font-medium"
-        >
-          <ShoppingCart size={18} />
-          Add to Cart
-        </button>
-        <Link
-          to={`/auth/productDetailPage/${product?.slug}`}
-          className="text-blue-600 font-semibold hover:underline"
-        >
-          View Details →
-        </Link>
-      </div>
+   <div className="flex flex-col md:flex-row flex-wrap items-center justify-between bg-gray-50 px-5 py-3 border-t border-gray-200 transition-transform group-hover:translate-y-0 translate-y-2 gap-2 md:gap-4">
+  <button
+    onClick={handleAddToCart}
+    className="flex items-center justify-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-xl shadow hover:bg-blue-700 transition-all font-medium w-full md:w-auto"
+  >
+    <ShoppingCart size={18} />
+    Add to Cart
+  </button>
+  <Link
+    to={`/auth/productDetailPage/${product?.slug}`}
+    className="text-blue-600 font-semibold hover:underline w-full md:w-auto text-center md:text-left"
+  >
+    View Details →
+  </Link>
+</div>
+
+
     </div>
   );
 };
